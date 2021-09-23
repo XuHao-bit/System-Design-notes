@@ -28,3 +28,19 @@ Note By: xuhaobit@gmail.com
 
 
 
+### Course 2. System Design Primer: How to start with distributed systems?
+
+- think about to have a pizza shop
+  - how to scaling?
+    - 1【Vertical Scaling，可伸缩性】Optimize process  and increase throughput with the same resource.
+    - 2 Preparing before hand at non-peak hours.
+    - 3【Backups】keep a backup and avoid single point of failure.
+    - 4【Horizontal Scaling】Hire more resources.
+    - 5 Micro Service architecture
+    - ![micro_service_arch](./imgs/micro_service_arch.png)
+    - 6 Distributed System (Build a new system)
+    - 7 Load Balance (Build a manager to send request to Server in a balanced way.)
+    - 8 Decoupling 【解耦】
+    - 9 Logging and Metrics calculation.
+    - 10 Extensible 【可扩展性】指的是增加组件、扩充功能的能力
+

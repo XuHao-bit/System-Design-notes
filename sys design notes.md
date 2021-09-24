@@ -44,3 +44,7 @@ Note By: xuhaobit@gmail.com
     - 9 Logging and Metrics calculation.
     - 10 Extensible 【可扩展性】指的是增加组件、扩充功能的能力
 
+- Consistent Hashing helps to make Load Balancing
+  - 为什么要使用一致性哈希？
+    - 在对request进行hash的时候，如果同一个用户得到的结果是一致的，那么他的请求就会发到同一个server，因而可以将用户信息存放在server的cache中；
+    - 而如果访问到的不同的server，那么用户信息将不停的从cache换下去，访问信息的复杂度就提升了。

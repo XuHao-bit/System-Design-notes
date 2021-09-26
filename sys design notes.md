@@ -28,7 +28,7 @@ Note By: xuhaobit@gmail.com
 
 
 
-### Course 2. System Design Primer: How to start with distributed systems?
+#### Course 2. System Design Primer: How to start with distributed systems?
 
 - think about to have a pizza shop
   - how to scaling?
@@ -44,7 +44,24 @@ Note By: xuhaobit@gmail.com
     - 9 Logging and Metrics calculation.
     - 10 Extensible 【可扩展性】指的是增加组件、扩充功能的能力
 
-- Consistent Hashing helps to make Load Balancing
-  - 为什么要使用一致性哈希？
-    - 在对request进行hash的时候，如果同一个用户得到的结果是一致的，那么他的请求就会发到同一个server，因而可以将用户信息存放在server的cache中；
-    - 而如果访问到的不同的server，那么用户信息将不停的从cache换下去，访问信息的复杂度就提升了。
+
+
+#### Course3.4. Consistent Hashing
+
+Consistent Hashing helps to make Load Balancing
+
+- 为什么要使用一致性哈希？
+  - 在对request进行hash的时候，如果同一个用户得到的结果是一致的，那么他的请求就会发到同一个server，因而可以将用户信息存放在server的cache中；
+  - 而如果访问到的不同的server，那么用户信息将不停的从cache换下去，访问信息的复杂度就提升了。
+- 顺时针hash结构
+  - ![hash_arch](./imgs/hash_arch.png)
+  - 优点：如果server够多的话，每一个request分配到server的概率都是平均的1/N；
+  - 缺点：如果server少的话，会出现负载不均衡的情况（增加、减少server，负载会不均衡）
+- 改进结构
+  - 每一个server使用多个hash function，这样的话，尽管server少，映射之后还是会变多；在server减少一个之后，在圈形结构中也是均匀的减少，这样尽可能最大的保持部分资源不变。
+  - ![hash_arch_v2](./imgs/hash_arch_v2.png)
+  - 经典饼图（最小改变）
+- 使用场景？
+  - 分布式系统的负载均衡问题
+  - web缓存（同一用户经过一致哈希之后，映射到同一个服务器，这样可以保证缓存的高效命中）
+  - 数据库

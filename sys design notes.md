@@ -65,3 +65,13 @@ Consistent Hashing helps to make Load Balancing
   - 分布式系统的负载均衡问题
   - web缓存（同一用户经过一致哈希之后，映射到同一个服务器，这样可以保证缓存的高效命中）
   - 数据库
+
+
+
+#### Course 5. Message queue
+
+- Notifier with: Load Balancing, Heart-Beat and DB Persistence --> **Message/Task Queue**
+- ![message_queue_intro](./imgs/message_queue_intro.png)
+- 理解：server要处理的request被放入task queue里面，然后所有的task被均匀的分配给了所有的server，当某些server宕机之后，notifier通过心跳包检测到server的id，并在持久化的db中查到sid对应的未完成的task（request），然后负载均衡地将未完成的request再分配给其他的server。最终实现异步RPC。
+- 举例：JMS(Java Message Service), ActiveMQ, RabbitMQ
+- 使用场景：业务解耦/最终一致性/广播/错峰流控；如果需要强一致性，关注业务逻辑的处理结果，那么只需要RPC就好了。

@@ -136,3 +136,23 @@ Consistent Hashing helps to make Load Balancing
     - ![db_direct_based_sharding](./imgs/db_direct_based_sharding.png)
     - 【优势】灵活性，对比范围分片只能指定键的范围，键的分片只能指定一种哈希函数，他们更改起来比较麻烦。
     - 【劣势】每次查找需要进行一次查表，性能下降；有单点故障，查找表损坏，会导致系统无法正常运行
+- 本章节图片参考：https://zhuanlan.zhihu.com/p/57185574
+
+
+
+#### Course 8 How Netflix onboards new context: Video Processing at scale
+
+- Problem Description
+- Video formats and resolutions
+  - codec to compress the video, 高质量、中等质量、低质量。。。
+  -  different resolutions，1080p、720p等等 
+- Chunk processing  
+  - 将视频划分为块
+  - Scenes>Timestamp，将视频按场景分块，而非按时间：将视频按照4s分为一个shot，将多个shot组合成一个scene
+  - Sparse & Dense Movie，对应着不同的请求策略，每次请求得到的视频数量的多少
+- Storage
+  - Amazon S3，只保存常量数据，不提供修改
+- Open Connect for video caching
+  - 建立了Open Connect Box来缓存某些视频，避免访问美国的服务器
+- Summary
+
